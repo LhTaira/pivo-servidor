@@ -1,0 +1,26 @@
+{
+  "name": "pivo-servidor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LhTaira/pivo-servidor.git"
+  },
+  "author": "Eduardo Lima",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LhTaira/pivo-servidor/issues"
+  },
+  "homepage": "https://github.com/LhTaira/pivo-servidor#readme",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "fs": "0.0.1-security"
+  }
+}
