@@ -1,6 +1,7 @@
 const express = require('express');
 const userRoutes = require('./UserRoutes');
 const homeRoutes = require('./HomeRouter');
+const controlRoutes = require('./ControlRoutes');
 
 const router = express.Router();
 
@@ -10,5 +11,5 @@ router.get('/', (req, res) => {
     });
 });
 module.exports = (app) => {
-    app.use('/', [userRoutes], [homeRoutes]);
+    app.use('/', [userRoutes], [homeRoutes], [controlRoutes]);
 };

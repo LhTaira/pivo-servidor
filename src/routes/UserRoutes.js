@@ -5,7 +5,7 @@ const userRepository = require('../repository/UserRepository');
 routes.post('/saveUserPreferences', async (req, res, next) => {
     var body = req.body;
 
-    userRepository.saveUserPreferences(body.lamina, body.irrigation).then(response => res.json(response));
+    userRepository.saveUserPreferences(body.lamina, body.irrigation, body.control).then(response => res.json(response));
 });
 
 routes.get('/getUserPreferences', async (req, res, next) => {

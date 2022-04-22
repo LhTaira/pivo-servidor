@@ -1,9 +1,10 @@
 fs = require('fs');
 
-function saveUserPreferences(lamina, irrigation) {
+function saveUserPreferences(lamina, irrigation, control) {
     let preferences = {
         lamina: lamina,
-        irrigation: irrigation
+        irrigation: irrigation,
+        control: control
     }
     let data = JSON.stringify(preferences);
     return new Promise((resolve, reject) => {
