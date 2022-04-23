@@ -1,0 +1,35 @@
+version: "3"
+services:
+    mqtt:
+        image: emqx/emqx:4.4.3
+        container_name: emqx
+        ports:
+            - "1883:1883"
+            - "8081:8081"
+            - "8083:8083"
+            - "8084:8084"
+            - "18083:18083"
+    server:
+        container_name: server
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - "3000:3000"
+        depends_on:
+            - mqtt
+        volumes:
+            - .:/app
+            - /app/node_modules
+    client:
+        container_name: client
+        build:
+            context: .
+            dockerfile: client.Dockerfile
+        ports:
+            - "3001:3001"
+        depends_on:
+            - mqtt
+        volumes:
+            - .:/app
+            - /app/node_modules

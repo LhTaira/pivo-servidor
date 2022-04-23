@@ -4,29 +4,28 @@ const mqttClient = mqtt.connect('ws://localhost:8083/mqtt', { username: process.
 
 const controlTopic = 'controlQuery';
 const responseControlTopic = 'controlResponse';
-const statusTopic = 'statusQuery';
+
 const responseStatusTopic = 'statusResponse';
+const statusFrontResponse = 'statusFrontResponse'
 
 function startMqtt() {
     mqttClient.on('connect', function () {
         console.log('Server connected to Mqtt broker');
-        mqttClient.subscribe(controlTopic);
         mqttClient.subscribe(responseControlTopic);
-        mqttClient.subscribe(statusTopic);
         mqttClient.subscribe(responseStatusTopic);
     });
     
     
     mqttClient.on('message', function (topic, message) {
         console.log('Received query from client: -', message.toString());
-    
-        if(topic == statusTopic){
+        console.log('Topic: ', topic);
+        if(topic == responseControlTopic){
 
             mqttClient.publish(responseStatusTopic, message.toString());
 
-        } else if(topic == controlTopic) {
-
-            mqttClient.publish(responseControlTopic, message.toString());
+        } else if(topic == responseStatusTopic) {
+            console.log("Published message: ", message.toString());
+            mqttClient.publish(statusFrontResponse, message.toString());
 
         }
         

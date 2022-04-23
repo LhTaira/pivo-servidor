@@ -1,5 +1,13 @@
 # pivo-servidor
 
-docker pull emqx/emqx:4.4.3
+## Pré-requisitos
 
-docker run -d --name emqx -p 1883:1883 -p 8081:8081 -p 8083:8083 -p 8084:8084 -p 8883:8883 -p 18083:18083 emqx/emqx:4.4.3
+É necessário possuir [Docker](https://docs.docker.com/get-docker/) e docker-compose.
+
+Para iniciar o servidor: 
+
+``` make start ```
+
+Para encerrar:
+
+``` make stop ```
