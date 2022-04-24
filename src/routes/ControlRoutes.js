@@ -28,7 +28,6 @@ routes.get('/getStatus', async (req, res, next) => {
 
 routes.post('/path', async (req, res, next) => {
     var body = req.body;
-
     var publish = mqtt.publishMessage('pathQuery',JSON.stringify(body));
     if(publish){
         res.json({status: 200, message: "Message published!"});

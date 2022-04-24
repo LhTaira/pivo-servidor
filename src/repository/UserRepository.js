@@ -1,8 +1,7 @@
 fs = require('fs');
 
-function saveUserPreferences(lamina, irrigation, control) {
+function saveUserPreferences(irrigation, control) {
     let preferences = {
-        lamina: lamina,
         irrigation: irrigation,
         control: control
     }

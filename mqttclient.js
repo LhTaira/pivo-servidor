@@ -1,5 +1,5 @@
 const mqtt = require('mqtt');
-const mqttClient = mqtt.connect('ws://mqtt:8083/mqtt', { username: 'admin', password: 'pipeadmin' });
+const mqttClient = mqtt.connect('ws://mqtt:8083/mqtt', { username: 'pipeclient', password: 'pipeclient' });
 
 const pathTopic = 'pathQuery';
 const statusTopic = 'statusQuery';
@@ -8,10 +8,8 @@ const controlTopic = 'controlQuery';
 
 const mockStatus = {
     pipe: true,
-    reel: false,
     pump: true,
-    arm: true,
-    wheels: true
+    arm: true
 }
 
 mqttClient.on('connect', function () {
@@ -36,7 +34,6 @@ mqttClient.on('message', function (topic, message) {
     } else if (topic == controlTopic){
         console.log('Received control command: ', message.toString());
     }
-    
     mqttClient.end();
 });
 

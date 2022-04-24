@@ -23,6 +23,7 @@ services:
             - /app/node_modules
     client:
         container_name: client
+        restart: always
         build:
             context: .
             dockerfile: client.Dockerfile

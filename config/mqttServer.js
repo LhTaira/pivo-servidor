@@ -1,21 +1,22 @@
 require('dotenv').config();
 const mqtt = require('mqtt');
-const mqttClient = mqtt.connect('ws://localhost:8083/mqtt', { username: process.env.LOGIN, password: process.env.PASSWORD });
+const mqttClient = mqtt.connect('ws://mqtt:8083/mqtt', { username: 'pipeserver', password: 'pipeserver' });
 
-const controlTopic = 'controlQuery';
+
 const responseControlTopic = 'controlResponse';
-
+const modeTopic = 'modeTopic';
 const responseStatusTopic = 'statusResponse';
 const statusFrontResponse = 'statusFrontResponse'
 
 function startMqtt() {
+    console.log('Starting MQTT...')
     mqttClient.on('connect', function () {
         console.log('Server connected to Mqtt broker');
         mqttClient.subscribe(responseControlTopic);
         mqttClient.subscribe(responseStatusTopic);
     });
     
-    
+    console.log('MQTT started')
     mqttClient.on('message', function (topic, message) {
         console.log('Received query from client: -', message.toString());
         console.log('Topic: ', topic);
@@ -30,7 +31,7 @@ function startMqtt() {
         }
         
         console.log('Responded to client');
-        mqttClient.end();
+      
     });
 }
 
@@ -43,7 +44,7 @@ async function publishMessage(topic, message) {
         return true;
     } catch(ex) {
         console.log('Failed to publish message: ', message);
-        mqttClient.end();
+        
         return false;
     }
 }

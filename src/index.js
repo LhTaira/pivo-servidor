@@ -12,6 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 require('./routes/Router')(app);
 configRoutes(app)
+
 mqtt.startMqtt();
 
 app.listen(3000)

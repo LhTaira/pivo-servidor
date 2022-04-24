@@ -40,27 +40,17 @@ routes.get('/', async (req, res, next) => {
 					{
 						name: 'pipe',
 						type: 'bool',
-						optional: false
+						optional: true
 					},
 					{
 						name: 'pump',
 						type: 'bool',
-						optional: false
+						optional: true
 					},
 					{
 						name: 'arm',
 						type: 'bool',
-						optional: false
-					},
-					{
-						name: 'wheels',
-						type: 'bool',
-						optional: false
-					},
-					{
-						name: 'reel',
-						type: 'bool',
-						optional: false
+						optional: true
 					},
 				],
 			},
@@ -68,43 +58,43 @@ routes.get('/', async (req, res, next) => {
 				type: 'post',
 				params: [
 					{
-						name: 'up',
+						name: 'R0',
 						type: 'bool',
 						optional: true
 					},
 
 					{
-						name: 'down',
+						name: 'L0',
 						type: 'bool',
 						optional: true
 					},
 					{
-						name: 'left',
+						name: 'L2',
 						type: 'bool',
 						optional: true
 					},
 					{
-						name: 'right',
+						name: 'R3',
 						type: 'bool',
 						optional: true
 					},
 					{
-						name: 'upLeft',
+						name: 'L1',
 						type: 'bool',
 						optional: true
 					},
 					{
-						name: 'upRight',
+						name: 'R1',
 						type: 'bool',
 						optional: true
 					},
 					{
-						name: 'downLeft',
+						name: 'L3',
 						type: 'bool',
 						optional: true
 					},
 					{
-						name: 'downRight',
+						name: 'R3',
 						type: 'bool',
 						optional: true
 					},
