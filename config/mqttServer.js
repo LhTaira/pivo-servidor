@@ -1,6 +1,6 @@
 require('dotenv').config();
 const mqtt = require('mqtt');
-const mqttClient = mqtt.connect('ws://mqtt:8083/mqtt', { username: 'pipeserver', password: 'pipeserver' });
+const mqttClient = mqtt.connect('mqtt://broker.emqx.io:1883/mqtt', { username: 'admin', password: 'public' });
 
 
 const responseControlTopic = 'controlResponse';

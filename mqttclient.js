@@ -1,5 +1,5 @@
 const mqtt = require('mqtt');
-const mqttClient = mqtt.connect('ws://mqtt:8083/mqtt', { username: 'pipeclient', password: 'pipeclient' });
+const mqttClient = mqtt.connect('mqtt://broker.emqx.io:1883/mqtt', { username: 'admin', password: 'public' });
 
 const pathTopic = 'pathQuery';
 const statusTopic = 'statusQuery';
@@ -34,6 +34,5 @@ mqttClient.on('message', function (topic, message) {
     } else if (topic == controlTopic){
         console.log('Received control command: ', message.toString());
     }
-    mqttClient.end();
-});
 
+});

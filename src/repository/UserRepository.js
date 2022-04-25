@@ -1,15 +1,15 @@
 fs = require('fs');
 
-function saveUserPreferences(irrigation, control) {
+function saveUserPreferences(lamina, control) {
     let preferences = {
-        irrigation: irrigation,
+        lamina: lamina,
         control: control
     }
-    let data = JSON.stringify(preferences);
+    let data = JSON.stringify(preferences,null,2);
     return new Promise((resolve, reject) => {
         fs.writeFile('preferences.json', data, function (err) {
-            if (err)  resolve({erro: err});
-            resolve();
+            if (err)  reject({erro: err});
+            resolve(data);
           });
     });
 }
@@ -17,7 +17,7 @@ function saveUserPreferences(irrigation, control) {
 function getUserPreferences() {
     return new Promise((resolve, reject) => {
         fs.readFile('preferences.json', function (err, data) {
-            if (err) resolve({erro: err});
+            if (err) reject({erro: err});
             resolve(JSON.parse(data))
           });
     });
